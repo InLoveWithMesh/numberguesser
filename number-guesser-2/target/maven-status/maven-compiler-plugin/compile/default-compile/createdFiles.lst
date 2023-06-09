@@ -1,0 +1,5 @@
+com\example\numberguesser2\WebSecurityConfig.class
+com\example\numberguesser2\NumberGuesser2Application.class
+com\example\numberguesser2\gameDictionary.class
+com\example\numberguesser2\MvcConfig.class
+com\example\numberguesser2\game.class
