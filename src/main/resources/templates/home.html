@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <style media="screen">
+      *,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #080710;
+}
+.background{
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+.background .shape{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+.shape:first-child{
+    background: linear-gradient(
+        #1845ad,
+        #23a2f6
+    );
+    left: -300px;
+    top: -120px;
+}
+.shape:last-child{
+    background: linear-gradient(
+        to right,
+        #ff512f,
+        #f09819
+    );
+    right: -350px;
+    bottom: -120px;
+}
+form{
+    min-height: 450px;
+    width: 800px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+
+.form-small {
+    height: 350px;
+    /* ... */
+}
+
+.form-large {
+    margin-bottom: 50px;
+    margin-top: 50px;
+    height: auto;
+    /* ... */
+}
+
+form *{
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+    margin-bottom:25px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 25px;
+}
+
+label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+p{
+    min-height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 15px 10px;
+    margin-top: 7px;
+    font-size: 16px;
+    font-weight: 300;
+    vertical-align: middle;
+
+}
+
+::placeholder{
+    color: #e5e5e5;
+}
+
+#container {
+  text-align: center;
+}
+
+button{
+    display:inline-block;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    width: 25%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+
+.logout-button {
+  align-text: center;
+  position: absolute;
+  width: 10%;
+  top: 30px;
+  right: 30px;
+  background-color: #ffffff;
+  color: #080710;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  display: flex;
+  align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout-button i {
+  margin-right: 5px;
+}
+    </style>
+
+</head>
+<body>
+<div class="background">
+  <div class="shape"></div>
+  <div class="shape"></div>
+</div>
+
+<form id="myForm" class="form-small">
+  <h3>Number Guess Game</h3>
+  <div id="container">
+    <p style="white-space: pre-line">Hello,
+      if you landed here, you probably want to play the Number-Guess-Game!
+      The Game works like this:
+
+      - The Computer guesses a random Number between 0 and 1000
+      - You try to guess the Computer's random number
+      - The fewer guesses you need, the better you are
+
+      - Click "Continue" if you want to be redirected to the Game!
+    </p>
+    <button id="submitbutton" onclick="contfunc()">Continue</button>
+  </div>
+</form>
+<script>
+    function contfunc() {
+        window.location.href = "/game";
+    }
+</script>
+</body>
+</html>
