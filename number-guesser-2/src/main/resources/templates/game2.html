@@ -162,7 +162,6 @@ button{
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
-
 }
 .social{
   margin-top: 30px;
@@ -213,8 +212,19 @@ button{
   margin-right: 5px;
 }
 
+.horizontal-center {
+  width: auto;
+  margin: 0 auto;
+  margin-top: 30px;
+  display:block;
+}
 
-
+.button-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
     </style>
 
 </head>
@@ -255,9 +265,36 @@ button{
   </table>
   <label for="log" id="log-label" style="visibility:hidden">Request Log </label>
   <p id="log" style="white-space: pre-line; visibility:hidden" ></p>
-
+  <div class="button-container">
+    <button id="restartbutton" style="visibility:hidden" onclick="restart()">Restart</button>
+    <button id="logbutton" style="visibility:hidden" onclick="detaillog(event)">Old Games</button>
+  </div>
+  <label for="dlog" id="detaillog-label" style="visibility:hidden">Request Log </label>
+  <p id="dlog" style="white-space: pre-line; visibility:hidden" ></p>
 </form>
 <script>
+
+function restart() {
+    fetch("http://localhost:8080/start-game", { method: 'GET' })
+        .catch(error => console.log('error', error));
+    window.location.href = "/game";
+}
+
+function show(event){
+  event.preventDefault();
+
+  var form = document.getElementById("myForm");
+    form.classList.remove("form-small");
+    form.classList.add("form-large");
+
+  document.getElementById("myTable").style.visibility = "visible";
+  document.getElementById("message").style.visibility = "visible";
+  document.getElementById("log").style.visibility = "visible";
+  document.getElementById("log-label").style.visibility = "visible";
+  document.getElementById("restartbutton").style.visibility = "visible";
+  document.getElementById("logbutton").style.visibility = "visible";
+}
+
 function guessRequest(event) {
     event.preventDefault(); // Das Standardverhalten des Submit-Buttons unterdrücken
     var guessednumber = document.getElementById("guess").value;
@@ -288,11 +325,22 @@ function guessRequest(event) {
     document.getElementById("message").style.visibility = "visible";
     document.getElementById("log").style.visibility = "visible";
     document.getElementById("log-label").style.visibility = "visible";
-
-
-
-
+    document.getElementById("restartbutton").style.visibility = "visible";
+    document.getElementById("logbutton").style.visibility = "visible";
 }
+
+function detaillog(event) {
+    event.preventDefault(); // Das Standardverhalten des Submit-Buttons unterdrücken
+    fetch("http://localhost:8080/detailedlog", { method: 'GET' })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            document.getElementById("dlog").innerHTML = data.message;
+        })
+        .catch(error => console.log('error', error));
+    document.getElementById("dlog").style.visibility = "visible";
+}
+
 var input = document.getElementById("guess");
 input.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {

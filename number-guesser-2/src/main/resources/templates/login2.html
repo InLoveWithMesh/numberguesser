@@ -150,13 +150,9 @@ button{
   <div style="color:cyan;" th:if="${param.logout}">You have been logged out!</div>
   <label for="username">Username<input type="text" placeholder="Username" id="username" name="username"></label>
 
-
   <label for="password">Password<input type="password" placeholder="Password" id="password" name="password"></label>
   <button>Log In</button>
   <div style="color:red;" th:if="${param.error}">Invalid username or password!</div>
-
-
-
 
 </form>
 </body>
